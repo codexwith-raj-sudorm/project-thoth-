@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-thoth"
+version = "4.0.0"
+description = "On-device dual-agent Python synthesis and verification PWA"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0,<3",
+    "fastapi>=0.110,<1",
+    "uvicorn>=0.29,<1",
+    "httpx>=0.27,<1",
+    "rich>=13,<15",
+]
+license = {text = "MIT"}
+authors = [{name = "Project Thoth Contributors"}]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "pytest-cov>=4"]
+
+[project.scripts]
+thoth = "thoth.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
